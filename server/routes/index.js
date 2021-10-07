@@ -1,10 +1,11 @@
 const router = require("express").Router();
-const coastersRouter = require('./coaster.routes')
-const authRouter = require('./auth.routes')
+const authRouter = require('./auth.routes'); 
+const mobileRoutes = require('./mobiles.rotes');
 
 
-router.use("/coasters", coastersRouter);
-router.use("/auth", authRouter);
+
+router.use("/auth", authRouter); 
+router.use('/catalog', mobileRoutes);
 
 // You put the next routes here 👇
 // example: router.use("/auth", authRoutes)

@@ -1,47 +1,41 @@
-const { Schema, model } = require("mongoose"); 
+const { Schema, model } = require("mongoose");
 
 
 
-const ProductModel  =  new Schema({
+const ProductModel = new Schema({
     name: {
-        unique: true,
-        type: String,
-        required: true,
+        type: String, 
         minlength: 2,
         maxlength: 30,
-        trim: true,
-    },
-    description: {
-        type: String, 
+    }, 
+    shortdescription: {
+        type: String,
         min: 20,
         max: 350
+    }, 
+    color: {
+        type: String
     },
     price: {
-        type: String 
-    }, 
+        type: Number
+    },
     image: {
-      type: String
-    }, 
-    rating: {
         type: String
-    }, 
-     location : {
-         type: String
-     }, 
-    caracteristics: { 
-        color: String, 
-        display: String, 
-        funtionalaties: String, 
-       power: Number, 
-       weight: Number,
-       memory: Number
-    }, 
-     popular: [{
-         type: Schema.Types.ObjectId,
-         ref: 'Product'
-     }]
-}) 
-const modelProduct  = model("ProductModel", ProductModel); 
+    },    
+    comments: [{
+     type: Schema.Types.ObjectId, 
+        ref: 'commentSchema'
+    }],   
+    mobile: {
+        type: Schema.Types.ObjectId,
+        ref: 'PhoneSchema'
+    },
+    popular: [{
+        type: Schema.Types.ObjectId,
+        ref: 'ProductModel'
+    }]
+})
+const modelProduct = model("ProductModel", ProductModel);
 
 
-model.exports = modelProduct;
+module.exports = modelProduct;

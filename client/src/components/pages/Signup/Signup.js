@@ -7,7 +7,8 @@ class Signup extends Component {
     super(props)
     this.state = {
       username: "",
-      pwd: ""
+      pwd: "", 
+      email: "",
     }
     this.authService = new AuthService()
   }
@@ -19,8 +20,8 @@ class Signup extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    const { username, pwd } = this.state
-    this.authService.signup(username, pwd)
+    const { username, pwd, email } = this.state
+    this.authService.signup(username, pwd , email)
       .then(res => this.props.history.push("/"))
       .catch(err => console.log(err))
   }
@@ -37,6 +38,12 @@ class Signup extends Component {
           <Form.Group className="mb-3" controlId="formBasicPassword">
             <Form.Label>Password</Form.Label>
             <Form.Control name="pwd" value={this.state.pwd} onChange={this.handleInput} type="password" placeholder="Password" />
+          </Form.Group>
+          
+
+          <Form.Group className="mb-3" controlId="formBasicPassword">
+            <Form.Label>E-mail</Form.Label>
+            <Form.Control name="email" value={this.state.email} onChange={this.handleInput} type="email" placeholder="Type your email" />
           </Form.Group>
 
           <Button variant="primary" type="submit">

@@ -8,10 +8,12 @@ class AuthService {
     })
   }
 
-  signup = (username, pwd) => this.instance.post("/signup", { username, pwd })
-  login = (username, pwd) => this.instance.post("/login", { username, pwd })
+  signup = (username, pwd, email) => this.instance.post("/signup", { username, pwd, email })
+  login = (username, pwd, email) => this.instance.post("/login", { username, pwd, email})
   logout = () => this.instance.get("/logout")
   isloggedin = () => this.instance.post("/isloggedin")
-}
+}  
+
+
 
 export default AuthService;

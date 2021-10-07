@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Nav, Navbar } from 'react-bootstrap'
+import { Container, Nav, Navbar, Form } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import AuthService from '../../../services/auth.service'
 
@@ -15,13 +15,15 @@ export default function Navigation(props) {
   return (
     <Navbar bg="light" expand="md" className="mb-5">
       <Container>
-        <Navbar.Brand href="#home">Coasters App</Navbar.Brand>
+        <Navbar.Brand href="#home">Digital Search</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Link className="nav-link" to="/">Home</Link>
-            <Link className="nav-link" to="/montañas-rusas">Montañas rusas</Link>
-
+            <Form>
+              <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                <Form.Control type="text" placeholder="Busca producto...." />
+              </Form.Group>
+            </Form>
             {props.loggedUser ?
               <>
                 <Link className="nav-link" to="/perfil">Mi perfil</Link>
@@ -37,6 +39,6 @@ export default function Navigation(props) {
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar >
+    </Navbar>
   )
 }
