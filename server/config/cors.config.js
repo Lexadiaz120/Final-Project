@@ -12,3 +12,9 @@ const corsOptions = {
 
 
 module.exports = (app) => app.use(cors(corsOptions));
+
+
+
+
+
+

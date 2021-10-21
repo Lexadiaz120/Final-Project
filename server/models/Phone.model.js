@@ -2,7 +2,7 @@ const {model , Schema} = require('mongoose');
 
 const PhoneSchema =  new Schema({ 
     mobileimg:{
-        type:String,
+        type: String,
     }, 
     mobilename: {
         type: String

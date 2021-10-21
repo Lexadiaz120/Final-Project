@@ -188,7 +188,7 @@ export default class CaracteristicForm extends Component {
             name !== 'mainCamera' &&
             name !== 'frontCamera' &&
             name !== 'display' && 
-            name !== 'mobilename' &&
+            name !== 'mobilename' &&  
             name !== 'description' &&
             name !== 'CommunicationsandPorts' &&
             name !== 'FunctionAndNavigation' && 
@@ -301,7 +301,7 @@ export default class CaracteristicForm extends Component {
                         <Form.Control onChange={(e) => this.handleChange(e)} name="mobileimg" value={this.state.mobileimg} type="text" placeholder="Introduce mobileimg" />
                     </Form.Group> 
                     <Form.Group className="mb-3" controlId="mobilename">
-                        <Form.Label> MobileName </Form.Label>
+                        <Form.Label> MobileImage</Form.Label>
                         <Form.Control onChange={(e) => this.handleChange(e)} name="mobilename" value={this.state.mobilename} type="text" placeholder="Introduce mobilename" />
                     </Form.Group>
 

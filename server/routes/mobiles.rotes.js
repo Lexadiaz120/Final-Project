@@ -2,13 +2,12 @@ const express = require("express");
 const router = express.Router();
 const Product = require('./../models/Product.model');
 const Phone = require('./../models/Phone.model');
-const shopMobile = require('./../models/Shop.model'); 
-const Comment = require('./../models/Comment.model');
+const shopMobile = require('./../models/Shop.model');
+
 //Show mobile
 router.get('/mobiles', (req, res) => {
-  Product.find()
-    .populate('mobile')
-    //.select('name image description price')
+  Product.find({ name: { $not: /^Laptop.*/ } })
+    .populate('mobile') 
     .then(product => res.status(200).json(product))
     .catch(err => res.status(200).json({ code: 500, error: "Error showing mobiles", err: err.message }));
 })
@@ -18,20 +17,20 @@ router.post('/mobiles', (req, res) => {
   Product.create(product)
     .then(product => res.status(200).json({ product, message: 'Product Created' }))
     .catch(err => res.status(500).json({ code: 500, error: "Error creating Product", err }))
-})
+}) 
 
-router.get('/caracteristics/:id', (req, res) => {
+
+router.get('/caracteristicsmobile/:id', (req, res) => {
   const { id } = req.params
   Phone.findById(id)
-
     .then(product => {
       res.status(200).json(product)
     })
     .catch(err => res.status(200).json({ code: 500, error: "Error showing mobiles", err }))
 })
-
-
-router.post('/caracteristics/:id', (req, res) => {
+ 
+      
+router.post('/caracteristicsmobile/:id', (req, res) => {
   const { id } = req.params;
   const mobile = req.body;
   Phone.create(mobile)
@@ -49,8 +48,7 @@ router.post('/caracteristics/:id', (req, res) => {
 router.get('/shops/:id', (req, res) => {
   console.log(req.params);
   shopMobile.find({ product: req.params.id })
-    .populate('product') 
-    .populate('comments')
+    .populate('product')
     // .select('name image')
     .then(products => {
       console.log(products);
@@ -69,25 +67,48 @@ router.post('/shops', (req, res) => {
     })
 })
 
-   
+
+
+// Buscar productos feautare 
+// Comments feauture 
+// Favoritos feauture
+
+
+
+
+
+
+
+// Añadir tv , añadir tablets, añadir portatiles, añadir monitores 
+
+// Para cada categoria 10 productos, 
+
+// Front end de todo
 
 // 
+
+//router.post('/comments/:id', (req, res) => {
+//  const { id } = req.params;
+ // const { comment } = req.body;
+ // console.log(comment)
+
+//  req.session.currentUser._id
+
+
+//  Comment.create({comment ,  user: req.session.currentUser._id})
+ //   .then(comment => {
+  //    return Product
+   //     .findByIdAndUpdate(id, { "$push": { "comment": comment._id } }, { new: true })
+    //    .then(product => {
+     //     res.status(200).json({ comment: product.comment, message: 'Comment created' })
+      //  })
+    //})
+   // .catch(err => console.log(err));
+//})
+
  
 
 
- 
-router.post('comments/:id', (req, res ) => { 
-  const {id} = req.params ; 
-  const {comment}  = req.body;  
-  
-
-  Comment.create({comment, user: req.session.currentUser._id})
-     .then(comment => {
-         return Product 
-           .findByIdAndUpdate(id, { "$push": { "comment": comment._id }})
-     })  
-     .catch(err => console.log(err));
-})
 
 
 
@@ -149,17 +170,3 @@ module.exports = router;
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;

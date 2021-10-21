@@ -1,0 +1,36 @@
+.backgroundnotebook{
+    background-image: url('https://wallpaperaccess.com/full/244625.jpg');
+    width: 100%; 
+    height: 100%; 
+    background-size: cover; 
+    background-repeat: no-repeat;
+} 
+
+.notebook_title{
+    text-align: center; 
+    color: wheat;
+} 
+ 
+
+.title{
+    color: wheat;
+} 
+.color{
+    color: wheat;
+}
+
+.shortdescription{
+    color: white;
+} 
+
+.row{
+    padding-left: 90px;
+} 
+
+
+
+.notebookimage{
+   width: 250px; 
+   height: 150px;
+   object-fit: cover;
+}

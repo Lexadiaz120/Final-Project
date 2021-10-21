@@ -8,12 +8,11 @@ class MobileService {
     }
     getMobiles = () => this.instance.get("/mobiles");
     createMobile = (name, shortdescription, shop, color, price, image) => this.instance.post("/mobiles", name, shortdescription, shop, color, price, image);
-    getOneMobileCaracteristic = (id) => this.instance.get(`/caracteristics/${id}`)
+    getOneMobileCaracteristic = (id) => this.instance.get(`/caracteristicsmobile/${id}`)
     createMobileCaracteristic = (id, display, description, Hardwarepart, mainCamera, frontCamera, CommunicationsandPorts,
-        FunctionAndNavigation, Power, General, mobilename, mobileimg) => this.instance.post(`/caracteristics/${id}`, {
+        FunctionAndNavigation, Power, General, mobilename, mobileimg) => this.instance.post(`/caracteristicsmobile/${id}`, {
             display, description, Hardwarepart, mainCamera, frontCamera, CommunicationsandPorts,
-            FunctionAndNavigation, Power, General, mobileimg, mobilename
-        });
+            FunctionAndNavigation, Power, General, mobileimg, mobilename});
     getShops = (id) => this.instance.get(`/shops/${id}`);
 }
 export default MobileService;

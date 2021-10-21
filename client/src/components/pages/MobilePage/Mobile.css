@@ -5,12 +5,89 @@
  }
  
  
- .shortdescription{
-    width: 200px;
+.container{
+    padding-left: 70px;
+}
+.background-mobile{
+    background-image: url('./../../../xiaomi-mi-10t-2181693.jpg'); 
+    background-repeat: no-repeat;  
 } 
 
 
+.backgroundmobile{
+    background-image: url('https://media.istockphoto.com/vectors/abstract-black-stripes-diagonal-background-vector-id1294603953?k=20&m=1294603953&s=612x612&w=0&h=KLAV73oMUFA2ucWMMTOdXT8Vn4LVUsh6NTiXRmlX5ZA='); 
+}
 
 img{
     object-fit: contain;
+}  
+
+
+h4{
+        color: #2c509a;
 } 
+
+p{
+    font-size: 15px; 
+    font-family: sans-serif; 
+    color: black;
+}  
+
+.linkname{
+    color: black;
+}
+
+ 
+.price{
+font-weight: 500;
+    font-size: 16px;
+    display: block;
+    margin-bottom: 7px;
+    text-decoration: none; 
+    color: #ff8d02;    
+}  
+
+.linkto{
+    text-decoration: none; 
+    color: wheat; 
+    display: block;
+} 
+
+.mobileimage{
+    object-fit: cover;
+} 
+
+.mobile_title{
+    text-align: center; 
+    color: white;
+} 
+.color{
+    color: wheat;
+}
+
+.shortmobiledescription{ 
+     width: 200px;
+      color: white;
+    font-size: 13px;
+    line-height: 20px;
+    margin-bottom: 7px;
+    height: 80px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+} 
+
+.mt-20{
+    margin-top: 20px;
+} 
+
+
+.name{
+    color: wheat;
+} 
+
+
+.navbar-toggler-icon{
+  background-color: white; 
+  border-radius: 30%;
+}

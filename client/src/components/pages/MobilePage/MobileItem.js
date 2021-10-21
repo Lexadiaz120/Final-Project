@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom'
 import './../MobilePage/Mobile.css'
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap'; 
+import './Mobile.css'
 
-export default function MobileItem({ name, shortdescription, color, price, image, mobile, _id }) {
+export default function MobileItem({ name, link, shortdescription, color, price, image, mobile, _id }) {
 
   return (
     <>
@@ -11,18 +12,21 @@ export default function MobileItem({ name, shortdescription, color, price, image
 
 
 
-          <Col md={6}>
-            <img width="150px" className="phoneimage" src={image} alt="phone"></img>
-            <p>{name}</p>
-            <p className="shortdescription">  <br /> {shortdescription}</p>
-            <p>Color: {color}</p>
-            <p>Precio: {"desde" + price + "€"}</p>
-            {mobile && <Link to={`/caracteristics/${_id}/${mobile._id}`}>View information</Link>}
+          <Col  className="mt-20" md={6}> 
+            <img className="mobileimage" width="200px" height="250px" src={image} alt="phone"></img>
+          <a className="linkto" href={link}> </a>
+            <p className="name">{name}</p>
+            <p  className="shortmobiledescription">  <br /> {shortdescription}</p>
+            <p className="color">Color: {color}</p>
+          <p className="price">Precio: {"desde" + " " + price + " " + "€"}</p>
+              
+            {mobile && <Link className="btn btn-primary" to={`/caracteristicsmobile/${_id}/${mobile._id}`}>View information</Link>}
           </Col>
 
 
         </>
-      }
+      } 
+
     </>
   )
 }

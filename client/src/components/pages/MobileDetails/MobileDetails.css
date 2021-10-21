@@ -1,0 +1,11 @@
+.containerx{
+    background-image: url('./../../../xiaomi-mi-10t-2181693.jpg');  
+    background-repeat: no-repeat; 
+    background-size: cover;
+    height: 100vh;
+} 
+
+.mob-foto{
+    
+    height: 50vh;
+}

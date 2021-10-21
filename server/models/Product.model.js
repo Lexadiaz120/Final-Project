@@ -2,17 +2,19 @@ const { Schema, model } = require("mongoose");
 
 
 
+
 const ProductModel = new Schema({
     name: {
         type: String, 
-        minlength: 2,
-        maxlength: 30,
     }, 
     shortdescription: {
         type: String,
         min: 20,
         max: 350
-    }, 
+    },  
+    link: {
+        type: String
+    },
     color: {
         type: String
     },
@@ -25,7 +27,11 @@ const ProductModel = new Schema({
     comments: [{
      type: Schema.Types.ObjectId, 
         ref: 'commentSchema'
-    }],   
+    }],    
+    notebook: {
+        type: Schema.Types.ObjectId, 
+        ref: 'Notebook'
+    }, 
     mobile: {
         type: Schema.Types.ObjectId,
         ref: 'PhoneSchema'

@@ -18,7 +18,9 @@
     "mongoose": "^6.0.7",
     "morgan": "^1.10.0",
     "react-bootstrap": "^1.6.4",
-    "route": "^0.2.5"
+    "react-typed": "^1.2.0",
+    "route": "^0.2.5",
+    "typed.js": "^2.0.12"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",

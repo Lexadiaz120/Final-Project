@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import MobileService from './../../../services/mobile.service';
 import { Container, Row, Col } from 'react-bootstrap';
-import Shoplist from '../Shops/Shoplist';
+import Shoplist from '../Shops/Shoplist'; 
+import './MobileDetails.css'
 
 
 export default class MobileDetails extends Component {
@@ -17,8 +18,11 @@ export default class MobileDetails extends Component {
     componentDidMount() {
         const { id } = this.props.match.params;
 
+        console.log(id);
+
         this.MobileService.getOneMobileCaracteristic(id)
             .then(res => {
+              
                 this.setState({
                     ...this.state,
                     mobile: res.data
@@ -30,20 +34,20 @@ export default class MobileDetails extends Component {
     render() {
         return (
             <>
-             
 
-                <Container>
+               
+                <Container  >
                     <Row >
                         <Col md={6}>
 
-                            {<img src={this.state.mobile?.mobileimg} alt="mobile"></img>}
-                            {<h2>{this.state.mobile?.mobilename}</h2>}
+                            {<img className="mob-foto" src={this.state.mobile?.mobileimg} alt="mob"/>}
+                          
                         </Col>
                         <Col md={6}>
-                            <h2> Caracteristics of mobile: </h2>
+                            <h1 > Caracteristics of mobile: </h1>
                             <br />
                             {/* {Object.keys(this.state).map(el => <p>{el}: {this.state[el]}</p>)} */}
-                            <h4>Hardware part:</h4>
+                            <h4 >Hardware part:</h4>
                             {<p>Display is: {this.state.mobile?.display}</p>}
                             {<p>Description is : {this.state.mobile?.description}</p>}
                             {<p>Operative system is of mobile is {this.state.mobile?.Hardwarepart.OperativeSistem}</p>}
@@ -60,7 +64,7 @@ export default class MobileDetails extends Component {
                         </Col>
 
                         <Col md={3}>
-                            <h5>Main Camera :</h5>
+                            <h4>Main Camera :</h4>
 
                             {<p> Objective numbers {this.state.mobile?.mainCamera.ObjectivesNumber}</p>}
                             {<p>Main Objective: {this.state.mobile?.mainCamera.mainObjective}</p>}
@@ -77,7 +81,7 @@ export default class MobileDetails extends Component {
 
                     <Row >
                         <Col md={3}>
-                            <h5> Front Camera :</h5>
+                            <h4> Front Camera :</h4>
 
 
                             {<p> FormFactor: {this.state.mobile?.frontCamera.FormFactor}</p>}
@@ -89,7 +93,7 @@ export default class MobileDetails extends Component {
                         </Col>
                         <Col md={3}>
 
-                            <h5> CommunicationsandPorts</h5>
+                            <h4> CommunicationsandPorts</h4>
 
                             {<p> Communcationstandarts: {this.state.mobile?.CommunicationsandPorts.Communcationstandarts}</p>}
                             {<p> Communications: {this.state.mobile?.CommunicationsandPorts.Communications}</p>}
@@ -97,14 +101,14 @@ export default class MobileDetails extends Component {
 
                         </Col>
                         <Col md={3}>
-                            <h5>FunctionAndNavigation</h5>
+                            <h4>FunctionAndNavigation</h4>
 
                             {<p>FeaturesAndCapabilities: {this.state.mobile?.FunctionAndNavigation.FeaturesAndCapabilities}</p>}
                             {<p> Navigation: {this.state.mobile?.FunctionAndNavigation.Navigation}</p>}
 
                         </Col>
                         <Col md={3}>
-                            <h5>Power</h5>
+                            <h4>Power</h4>
                             {<p>BatteryCapacity: {this.state.mobile?.Power.BatteryCapacity}</p>}
                             {<p> FastChargingTechnology : {this.state.mobile?.Power.FastChargingTechnology}</p>}
                             {<p>ChargingPower: {this.state.mobile?.Power.ChargingPower}</p>}
@@ -114,7 +118,7 @@ export default class MobileDetails extends Component {
                         </Col>
                         <Col md={3}>
 
-                            <h5>General</h5>
+                            <h4>General</h4>
 
                             {<p> LuiqidColling: {this.state.mobile?.General.LuiqidColling}</p>}
                             {<p>  FrameCoverMaterial: {this.state.mobile?.General.FrameCoverMaterial}</p>}
@@ -125,7 +129,7 @@ export default class MobileDetails extends Component {
                             {<p>Official web page: {this.state.mobile?.General.oficialwebPage}</p>}
 
                         </Col>
-                    </Row>  
+                    </Row>
 
                     <Shoplist productId={this.props.match.params.productId} />
                 </Container>
