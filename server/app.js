@@ -27,6 +27,6 @@ app.use(express.static(path.join(__dirname, "public")))
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
 
-app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
+//app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
 
 module.exports = app;
