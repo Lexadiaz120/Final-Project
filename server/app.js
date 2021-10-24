@@ -20,13 +20,13 @@ require("./config/cors.config")(app);
 
 
 
-app.use(express.static(path.join(__dirname, "public")))
+//app.use(express.static(path.join(__dirname, "public")))
 
 // 👇 Start handling routes here
 // Contrary to the views version, all routes are controlled from the routes/index.js
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
 
-//app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
+app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
 
 module.exports = app;
