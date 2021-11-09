@@ -1,47 +1,118 @@
 import React, { Component } from 'react';
 import MobileService from './../../../services/mobile.service';
-import { Container, Row, Col } from 'react-bootstrap';
-import Shoplist from '../Shops/Shoplist'; 
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import Shoplist from '../Shops/Shoplist';
 import './MobileDetails.css'
+
 
 
 export default class MobileDetails extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             mobile: null,
+            title: "",
+            description: "",  
+            user: ""
         }
         this.MobileService = new MobileService();
+
     }
 
-    componentDidMount() {
-        const { id } = this.props.match.params;
+    componentDidMount() { 
 
-        console.log(id);
+        this.refreshComments();
+        this.mobileCaracteristics();
 
-        this.MobileService.getOneMobileCaracteristic(id)
-            .then(res => {
-              
+    }
+     
+
+
+ mobileCaracteristics = () => {
+     const { id } = this.props.match.params;  
+     console.log(id);
+
+     this.MobileService.getOneMobileCaracteristic(id)
+         .then(res => {
+             console.log(res.data)
+
+             this.setState({
+                 ...this.state,
+                 mobile: res.data
+             })
+         })
+         .catch(err => console.log(err));
+ } 
+
+ refreshComments = () => {
+      const {id} = this.props.match.params; 
+     this.MobileService.getComments(id)
+         .then(res => {
+             this.setState({
+                 ...this.state,
+                 phone: res.data
+             })
+         })
+         .catch(err => console.log(err));
+
+ }
+
+    handleChange = (e) => {
+        const { value, name } = e.target;
+        this.setState({
+            ...this.state,
+            [name]: value, 
+        })
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        this.MobileService.createComments(this.state.mobile?._id, this.state.title, this.state.description)
+            .then((res) => {
+                console.log("CREADO COMENTARIO")
+                console.log(res.data)
                 this.setState({
-                    ...this.state,
-                    mobile: res.data
+                    title: "",
+                    description: "", 
+                    mobile_id: ""
+                    
+
                 })
             })
-            .catch(err => console.log(err));
+            .catch(err => console.log(err))
+    }  
+
+
+
+
+    deleteComments = (id) => {
+         this.MobileService.deleteComments(id)
+             .then(res => {
+                 console.log(res.data)
+
+                 this.setState({
+                     ...this.state,
+                     comment: res.data
+                 })
+             })
+             .catch(err => console.log(err));
     }
+
+  
 
     render() {
         return (
             <>
+             
 
-               
                 <Container  >
                     <Row >
                         <Col md={6}>
 
-                            {<img className="mob-foto" src={this.state.mobile?.mobileimg} alt="mob"/>}
-                          
+
+
+                            {<img className="mob-foto" src={this.state.mobile?.mobileimg} alt="mob" />}
+
                         </Col>
                         <Col md={6}>
                             <h1 > Caracteristics of mobile: </h1>
@@ -63,7 +134,7 @@ export default class MobileDetails extends Component {
 
                         </Col>
 
-                        <Col md={3}>
+                        <Col md={6}>
                             <h4>Main Camera :</h4>
 
                             {<p> Objective numbers {this.state.mobile?.mainCamera.ObjectivesNumber}</p>}
@@ -80,7 +151,7 @@ export default class MobileDetails extends Component {
                     </Row>
 
                     <Row >
-                        <Col md={3}>
+                        <Col md={6}>
                             <h4> Front Camera :</h4>
 
 
@@ -91,7 +162,7 @@ export default class MobileDetails extends Component {
                             {<p>    fullHdShooting: {this.state.mobile?.frontCamera.fullHdShooting}</p>}
 
                         </Col>
-                        <Col md={3}>
+                        <Col md={6}>
 
                             <h4> CommunicationsandPorts</h4>
 
@@ -100,14 +171,14 @@ export default class MobileDetails extends Component {
                             {<p>  ConnectionPorts: {this.state.mobile?.CommunicationsandPorts.ConnectionPorts}</p>}
 
                         </Col>
-                        <Col md={3}>
+                        <Col md={6}>
                             <h4>FunctionAndNavigation</h4>
 
                             {<p>FeaturesAndCapabilities: {this.state.mobile?.FunctionAndNavigation.FeaturesAndCapabilities}</p>}
                             {<p> Navigation: {this.state.mobile?.FunctionAndNavigation.Navigation}</p>}
 
                         </Col>
-                        <Col md={3}>
+                        <Col md={6}>
                             <h4>Power</h4>
                             {<p>BatteryCapacity: {this.state.mobile?.Power.BatteryCapacity}</p>}
                             {<p> FastChargingTechnology : {this.state.mobile?.Power.FastChargingTechnology}</p>}
@@ -116,7 +187,7 @@ export default class MobileDetails extends Component {
                             {<p>CharginTime: {this.state.mobile?.Power.CharginTime}</p>}
 
                         </Col>
-                        <Col md={3}>
+                        <Col md={6}>
 
                             <h4>General</h4>
 
@@ -129,10 +200,50 @@ export default class MobileDetails extends Component {
                             {<p>Official web page: {this.state.mobile?.General.oficialwebPage}</p>}
 
                         </Col>
+
+
                     </Row>
 
                     <Shoplist productId={this.props.match.params.productId} />
-                </Container>
+
+
+                    <Form   onSubmit={this.handleSubmit}>
+                        <Form.Group className="mb-3" controlId="title">
+                            <Form.Label> Title </Form.Label>
+                            <Form.Control onChange={(e) => this.handleChange(e)} name="title" value={this.state.title} type="text" placeholder="Introduce title" />
+                        </Form.Group>
+                        <Form.Group className="mb-3" controlId="description">
+                            <Form.Label> Description </Form.Label>
+                            <Form.Control onChange={(e) => this.handleChange(e)} name="description" value={this.state.description} type="text" placeholder="Introduce description" />
+                        </Form.Group> 
+
+                        <Form.Group className="mb-3 productid" controlId="id">
+                            <Form.Label> Product id </Form.Label>
+                            <Form.Control onChange={(e) => this.handleChange(e)} name="id" value={this.state.mobile?._id} type="text" placeholder="Introduce description" />
+                        </Form.Group>
+                        <Button onClick={this.refreshComments()}  variant="primary" type="submit">
+                            Create comments
+                        </Button>
+                    </Form>
+
+                    <h5>Comments </h5> 
+
+                    {
+                        this.state.phone?.comments.map((comment) => {
+                            return( 
+                                <>  
+                                <p> Author name:  {comment.name}</p>
+                                <p> Product name:  {comment.title}</p> 
+                                <p>Review:   {comment.description}</p>   
+                                <p>Comment: {comment.user}</p> 
+                                <Button onClick={()=> this.deleteComments(comment._id)}>Delete</Button>
+                
+                                </>
+                            ) 
+                        })
+                    }
+                </Container> 
+
             </>
         )
     }

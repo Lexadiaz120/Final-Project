@@ -14,6 +14,9 @@ class AuthService {
   isloggedin = () => this.instance.post("/isloggedin")
 }  
 
+ 
 
 
-export default AuthService;
+
+
+export default AuthService; 

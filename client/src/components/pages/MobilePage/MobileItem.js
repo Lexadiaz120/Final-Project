@@ -1,43 +1,32 @@
 import { Link } from 'react-router-dom'
-import './../MobilePage/Mobile.css'
-import { Container, Row, Col } from 'react-bootstrap'; 
-import './Mobile.css'
+import { Container, Row, Col } from 'react-bootstrap' ; 
 
-export default function MobileItem({ name, link, shortdescription, color, price, image, mobile, _id }) {
+
+export default function MobileItem({ name, link, shortdescription, color, price, image, mobile, _id}) {
 
   return (
     <>
       {_id &&
         <>
 
-
-
-          <Col  className="mt-20" md={6}> 
+          <Col  className="mt-20" md={6}>  
             <img className="mobileimage" width="200px" height="250px" src={image} alt="phone"></img>
           <a className="linkto" href={link}> </a>
-            <p className="name">{name}</p>
-            <p  className="shortmobiledescription">  <br /> {shortdescription}</p>
-            <p className="color">Color: {color}</p>
+            <p className="name">{name}</p> 
+            <p  className="shortmobiledescription">  <br /> {shortdescription}</p> 
+            <p className="color">Color: {color}</p> 
           <p className="price">Precio: {"desde" + " " + price + " " + "€"}</p>
+
               
             {mobile && <Link className="btn btn-primary" to={`/caracteristicsmobile/${_id}/${mobile._id}`}>View information</Link>}
           </Col>
-
-
         </>
       } 
 
     </>
   )
 }
+ 
 
 
- // CHARSTERISTICS 
- // TEEMOS QUE PILLAR EL MOBILE ID 
- // CONO PUEDEO HACERLO ? 
- // A TRAVES DE UN FORMILARIO ? 
-
-// Como puedo pillar este dato 
-
-
-
+ 

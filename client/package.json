@@ -18,7 +18,7 @@
     "yart": "^0.1.0"
   },
   "scripts": {
-    "start": "cross-env REACT_APP_API_URL=http://localhost:7000/api react-scripts start",
+    "start": "cross-env REACT_APP_API_URL=http://localhost:5000/api react-scripts start",
     "build": "cross-env REACT_APP_API_URL=https://digital-search.herokuapp.com/api react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

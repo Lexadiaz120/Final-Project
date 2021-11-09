@@ -1,4 +1,5 @@
-const express = require("express");
+const express = require("express"); 
+const uploader = require("./../config/cloudinary.config");
 const router = express.Router();
 const User = require('./../models/User.model');
 const bcrypt = require("bcrypt")

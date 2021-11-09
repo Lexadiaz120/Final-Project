@@ -291,10 +291,10 @@ export default class CaracteristicForm extends Component {
      render() {
         return (
             <>
-                <Form onSubmit={this.handleSumbit}>
+                <Form  onSubmit={this.handleSumbit}>
                     <Form.Group className="mb-3" controlId="id">
                         <Form.Label>Id </Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="id" value={this.state.id} type="text" placeholder="Introduce id  of mobile" />
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="id" value={this.state.id} type="text" placeholder={this} />
                     </Form.Group> 
                     <Form.Group className="mb-3" controlId="mobileimg">
                         <Form.Label> Mobileimage </Form.Label>

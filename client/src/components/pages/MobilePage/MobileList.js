@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import MobileService from '../../../services/mobile.service';
 import MobileItem from './MobileItem'; 
-import {Row, Container} from 'react-bootstrap' 
-import Search from '../Search/Search'; 
-import './Mobile.css'
+import {Row, Container, Button} from 'react-bootstrap' 
+import './Mobile.css'  
+
+
 export default class MobileList extends Component {
     constructor() {
         super();  
         this.state = {
-            mobile: undefined, 
+            mobile: undefined
        
         }
         this.mobileService = new MobileService();   
@@ -16,7 +17,13 @@ export default class MobileList extends Component {
 
     }
 
-    componentDidMount = () => this.getMobileData(); 
+    componentDidMount() {
+        this.addtoFavorites();
+        this.getMobileData(); 
+       
+
+    }
+    
   
 
 
@@ -32,10 +39,22 @@ export default class MobileList extends Component {
 
             })
             .catch(err => console.log(err));
-
-      
     }  
+   
+    
+  addtoFavorites = (id) => {
+       this.mobileService.addtoFavorites(id) 
+        .then(res => { 
+            console.log(res.data);
+            this.setState({
+                ...this.state,  
+                favorites: res.data
+            })
+        })
+  }
+  
 
+  
 
 
 
@@ -54,8 +73,7 @@ export default class MobileList extends Component {
     }
 
   
-  
-    
+
 
     displayMobiles = () => { 
        
@@ -66,25 +84,41 @@ export default class MobileList extends Component {
                        
 
                           
-                        
-                         {   
+                        {
+                            this.state.mobile?.map(mobile => {
+                                return(
+                                    <MobileItem key={mobile._id} {...mobile} />
+                                )
+                            })
+                        }
+                         {     
+                             
                             
                                 this.state.mobile?.map(mobile => {
-                             return (
-                                 <MobileItem key={mobile._id} {...mobile} /> 
+                             return ( 
+                                 <> 
+                                 <div className="content">  
+                                 <br/>
+                                  <Button onClick={() => this.addtoFavorites(mobile._id)}>Add to favorites</Button>
+                                 </div>
+                                 </>
+                                 
                              )}) 
-                            }  
+                             
+                             
+                            }
+                            
 
                         </Row>
-                    </Container>  
+                    </Container>
+                      
                    
                   
                 )
 
          
     } 
- 
-     
+  
 
     
 
@@ -93,24 +127,21 @@ export default class MobileList extends Component {
 
     render() {
         return (  
-           
+           <>
       
-   
+      
 
             <div className="fielder"> 
              
-                
+                {
+                    this.displayMobiles()
+                }
              
-                { 
-                 
-
-                    this.displayMobiles() 
-                    
-             } 
+               
 
               
             </div>
-        
+        </>
          
         )
     }

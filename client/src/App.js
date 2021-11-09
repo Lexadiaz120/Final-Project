@@ -11,11 +11,11 @@ class App extends Component {
   constructor() {
     super()
     this.state = {
-      loggedUser: undefined
+      loggedUser: undefined                        
     }
-    this.authService = new AuthService()
+    this.authService = new AuthService() 
   }
-
+                            
   componentDidMount = () => {
     this.fetchUser()
   }
@@ -34,8 +34,16 @@ class App extends Component {
         <Routes storeUser={this.storeUser} loggedUser={this.state.loggedUser} />
       </>
     );
-  }
-}
+
+
+
+
+  } 
+}   
+
+
+
+
 
 export default App; 
 

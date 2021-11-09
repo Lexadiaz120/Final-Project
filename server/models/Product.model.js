@@ -23,11 +23,7 @@ const ProductModel = new Schema({
     },
     image: {
         type: String
-    },    
-    comments: [{
-     type: Schema.Types.ObjectId, 
-        ref: 'commentSchema'
-    }],    
+    },     
     notebook: {
         type: Schema.Types.ObjectId, 
         ref: 'Notebook'
@@ -35,7 +31,7 @@ const ProductModel = new Schema({
     mobile: {
         type: Schema.Types.ObjectId,
         ref: 'PhoneSchema'
-    },
+    }, 
     popular: [{
         type: Schema.Types.ObjectId,
         ref: 'ProductModel'

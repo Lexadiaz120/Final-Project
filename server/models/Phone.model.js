@@ -72,7 +72,12 @@ const PhoneSchema =  new Schema({
        Dimensions: String , 
        Weight: String, 
        oficialwebPage: String, 
-   }, 
+   },   
+
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
  
 }, 
 {

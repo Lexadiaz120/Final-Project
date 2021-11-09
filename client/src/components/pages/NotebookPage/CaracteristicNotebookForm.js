@@ -49,35 +49,35 @@ export default class CaracteristicNotebookForm extends Component{
             <Form onSubmit={this.handleSumbit}> 
                     <Form.Group className="mb-3" controlid="id">
                         <Form.Label>Id:</Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="id" value={this.state.id}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="id" value={this.state.id} placeholder="Introduce Notebook Id"></Form.Control>
                     </Form.Group>
                 <Form.Group className="mb-3" controlid="display">
                     <Form.Label>Display:</Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="display" value={this.state.display}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="display" value={this.state.display} placeholder="Introduce Notebook display"></Form.Control>
                 </Form.Group>
                
                     <Form.Group className="mb-3" controlid="processor">
                         <Form.Label>processor:</Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="processor" value={this.state.processor}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="processor" value={this.state.processor} placeholder="Introduce Notebook processor"></Form.Control>
                     </Form.Group> 
 
                     <Form.Group className="mb-3" controlid="CPU">
                         <Form.Label>CPU:</Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="CPU" value={this.state.CPU}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="CPU" value={this.state.CPU} placeholder="Introduce CPU"></Form.Control>
                     </Form.Group> 
 
                     <Form.Group className="mb-3" controlid="StorageDevice">
                         <Form.Label> 
                             StorageDevice
                         </Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="StorageDevice" value={this.state.StorageDevice}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="StorageDevice" value={this.state.StorageDevice} placeholder="Introduce Storage Device"></Form.Control>
                     </Form.Group> 
 
                     <Form.Group className="mb-3" controlid="OperativeSystem">
                         <Form.Label>
                             OperativeSystem
                         </Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="OperativeSystem" value={this.state.OperativeSystem}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="OperativeSystem" value={this.state.OperativeSystem} placeholder="Introduce OperativeSystem"></Form.Control>
                     </Form.Group>
                     
 
@@ -85,14 +85,14 @@ export default class CaracteristicNotebookForm extends Component{
                         <Form.Label>
                             Laptopweight
                         </Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="Laptopweight" value={this.state.Laptopweight}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="Laptopweight" value={this.state.Laptopweight} placeholder="Introduce Laptopweight"></Form.Control>
                     </Form.Group> 
 
                     <Form.Group className="mb-3" controlid="image">
                         <Form.Label>
                            Image
                         </Form.Label>
-                        <Form.Control onChange={(e) => this.handleChange(e)} name="image" value={this.state.image}></Form.Control>
+                        <Form.Control onChange={(e) => this.handleChange(e)} name="image" value={this.state.image} placeholder="Introduce image"></Form.Control>
                     </Form.Group>
 
             

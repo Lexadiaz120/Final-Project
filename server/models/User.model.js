@@ -32,19 +32,28 @@ const userSchema = new Schema({
     enum: ['USER', 'ADMIN'],
     default: 'USER',
   },
-  photoProfile: {
+  imageUrl: {
     type: String,
   },
   favorites: [
     {
-      type: Schema.Types.ObjectId,
-      ref: 'Product'
+      type: Schema.Types.Object,
+      ref: 'ProductModel'
     }
-  ],
+  ], 
+  comments: [
+    {
+     type: Schema.Types.ObjectId, 
+      ref: 'commentSchema'
+    }
+  ]
 }, {
   timestamps: true
 })
 
-const User = model("User", userSchema);
+
+
+
+const User = model("User", userSchema);   
 
 module.exports = User;

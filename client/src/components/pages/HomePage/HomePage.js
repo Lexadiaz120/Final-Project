@@ -4,7 +4,7 @@ import { Carousel, Container, Row, Col} from 'react-bootstrap'
 import './HomePage.css'  
 import Navigation from '../../layout/Navigation/Navigation' 
 import ProductSearch from '../ProductsSearch/ProductsSearch'    
-import TypedReactDemo from '../TypeReactDemo/TypeReactDemo'
+import TypedReactDemo from '../TypeReactDemo/TypeReactDemo'  
 
 
 
@@ -27,7 +27,8 @@ export default function HomePage(){
                     <Row>
                         <Col><p className="digital_description">Find your digital product at a convenient price  </p></Col>
                     </Row> 
-                    <ProductSearch></ProductSearch>
+                    <ProductSearch></ProductSearch> 
+
             </Container>   
 
             </div>
