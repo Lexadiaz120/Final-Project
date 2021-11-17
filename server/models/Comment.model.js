@@ -8,13 +8,14 @@ const commentSchema = new Schema({
     },
     description: {
         type: String,
-        min: 20,
-        max: 150
+        min: 5,
+        max: 50
     }, 
-    user: {
+    user: [{
         type: Schema.Types.Object,
         ref: 'userSchema'
-    }
+    }], 
+   
 }, {
     timestamps: true
 });

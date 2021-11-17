@@ -12,6 +12,9 @@ const PhoneSchema =  new Schema({
    },   
    description:{
        type: String
+   },  
+   rating: {
+       type: String
    }, 
     Hardwarepart: {
         OperativeSistem: String, 

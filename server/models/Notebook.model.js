@@ -8,7 +8,11 @@ const NotebookSchema = new Schema({
     CPU: String, 
     StorageDevice: String, 
     OperativeSystem: String, 
-    Laptopweight: Number
+    Laptopweight: Number, 
+    comments: [{
+        type: Schema.Types.ObjectId,
+        ref: 'Comment'
+    }],
 }, 
 {
     timestamps: true,

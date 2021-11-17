@@ -1,0 +1,27 @@
+.profilephoto{
+    width: 250px; 
+    height: 250px; 
+    border-radius: 50%;
+}    
+
+
+
+.title{
+    color: white; 
+    font-family: 'emoji';
+}
+
+ 
+.email{
+    color: white;
+      font-family: 'emoji'; 
+   
+}
+
+.profilebackground{
+    background-image: url("https://i.ibb.co/7JYCLpm/F7-A121-A3-F7-A929-FFB4-DBC3-AE241-B3-B4-B6-EAAED1-D.jpg"); 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    height: 100vh; 
+} 
+

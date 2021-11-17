@@ -1,16 +1,21 @@
 import React, { Component } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import MobileService from '../../../services/mobile.service';
+ 
+let array = ['star', 'star', 'star', 'star', 'star']; 
 
 
-export default class CaracteristicForm extends Component {
+export default class CaracteristicForm extends Component { 
+ 
+
 
     state = {
         id: "",
         display: "", 
         description: "",  
         mobileimg: "",  
-        mobilename: "", 
+        mobilename: "",    
+        rating: "",
         Hardwarepart: {
             OperativeSistem: "", 
             processormodel: "", 
@@ -66,9 +71,11 @@ export default class CaracteristicForm extends Component {
             Weight: "",
             oficialwebPage: "",
         }
-    }  
+    }   
 
     MobileService = new MobileService();
+  
+ 
 
     handleChange = (e) => {
         const { value, name } = e.target;
@@ -210,7 +217,8 @@ export default class CaracteristicForm extends Component {
                 [name]: value
             })
     }
-
+  
+      
 
     handleSumbit = (e) => {
         e.preventDefault()
@@ -221,7 +229,7 @@ export default class CaracteristicForm extends Component {
                    display: "", 
                     description: "",   
                     mobileimg: "", 
-                    mobilename: "",
+                    mobilename: "", 
                     Hardwarepart: {
                         OperativeSistem: "",
                         processormodel: "",  

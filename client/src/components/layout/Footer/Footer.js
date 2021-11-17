@@ -4,8 +4,8 @@ import "./Footer.css"
 export default function Footer() {
   return (
     <footer>
-      <p>All rights reserved.</p>
-      <p>Made with ❤️ by Ironahck web dev 08/21 </p>
+      <p className="white">All rights reserved Digital Search.</p>
+      <p className="white">Made with ❤️ by Aleksei Motin </p>
     </footer>
   )
 }

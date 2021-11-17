@@ -14,11 +14,11 @@ const shopMobile = require('./../models/Shop.model');
 
 
 
-
 router.post('/comments/:id', (req, res) => {
   const { id } = req.params;  
-  let { title, description} = req.body
-  Comment.create({ title, description, user: req.session.currentUser.username})
+  let { title, description} = req.body 
+
+  Comment.create({ title, description, user: [req.session.currentUser.photo, req.session.currentUser.username]})
     .then(comment => {    
       return Phone.findByIdAndUpdate(id, { "$push": { "comments": comment._id } })
         .then(comment => res.status(200).json({ comment, message: 'Comment created' }))
@@ -132,107 +132,24 @@ router.get('/shops/:id', (req, res) => {
     .then(products => {
       res.status(200).json({ products, message: 'Shop show' })
     }).catch(err => res.status(500).json({ code: 500, error: 'Error  shops', err }))
-})
+})  
+
+
+
+
+
+
 
 
 router.post('/shops', (req, res) => {
-  const shop = req.body;
+  const shop = req.body; 
+  console.log(shop);
 
   shopMobile.create(shop)
     .then(product => {
       res.status(200).json({ product, message: 'Shop created' })
     })
 })
-
-
-
-// Buscar productos feautare 
-// Comments feauture 
-// Favoritos feauture
-
-
-
-
-
-
-
-// Añadir tv , añadir tablets, añadir portatiles, añadir monitores 
-
-// Para cada categoria 10 productos, 
-
-// Front end de todo
-
-// 
-
-//router.post('/comments/:id', (req, res) => {
-//  const { id } = req.params;
-// const { comment } = req.body;
-// console.log(comment)
-
-//  req.session.currentUser._id
-
-
-//  Comment.create({comment ,  user: req.session.currentUser._id})
-//   .then(comment => {
-//    return Product
-//     .findByIdAndUpdate(id, { "$push": { "comment": comment._id } }, { new: true })
-//    .then(product => {
-//     res.status(200).json({ comment: product.comment, message: 'Comment created' })
-//  })
-//})
-// .catch(err => console.log(err));
-//})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Find Caracteristic of mobile 
-
-
-
-
-
-
-// Show mobile 
-// Create mobile 
-// Show caracteristic of mobile 
-// Create caracteristic of mobile 
-// Edit mobile(Update mobile (router.put()))
-// Delete mobile  
-
-
 
 module.exports = router;
 

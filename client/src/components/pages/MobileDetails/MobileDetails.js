@@ -13,7 +13,8 @@ export default class MobileDetails extends Component {
             mobile: null,
             title: "",
             description: "",  
-            user: ""
+            user: "",  
+            photo: ""
         }
         this.MobileService = new MobileService();
 
@@ -45,12 +46,13 @@ export default class MobileDetails extends Component {
  } 
 
  refreshComments = () => {
-      const {id} = this.props.match.params; 
-     this.MobileService.getComments(id)
+      const {id} = this.props.match.params;
+     this.MobileService.getComments(id) 
          .then(res => {
+             console.log(res.data)
              this.setState({
                  ...this.state,
-                 phone: res.data
+                 note: res.data
              })
          })
          .catch(err => console.log(err));
@@ -74,7 +76,7 @@ export default class MobileDetails extends Component {
                 this.setState({
                     title: "",
                     description: "", 
-                    mobile_id: ""
+                    mobile_id: "", 
                     
 
                 })
@@ -104,23 +106,23 @@ export default class MobileDetails extends Component {
         return (
             <>
              
-
+            <div className="caracteristicsbackground">
                 <Container  >
                     <Row >
-                        <Col md={6}>
+                        <Col  md={6}>
 
 
 
                             {<img className="mob-foto" src={this.state.mobile?.mobileimg} alt="mob" />}
 
                         </Col>
-                        <Col md={6}>
+                        <Col className="technicfield" md={6}>
                             <h1 > Caracteristics of mobile: </h1>
                             <br />
                             {/* {Object.keys(this.state).map(el => <p>{el}: {this.state[el]}</p>)} */}
                             <h4 >Hardware part:</h4>
-                            {<p>Display is: {this.state.mobile?.display}</p>}
-                            {<p>Description is : {this.state.mobile?.description}</p>}
+                            {<p >Display is: {this.state.mobile?.display}</p>}
+                            {<p >Description is : {this.state.mobile?.description}</p>}
                             {<p>Operative system is of mobile is {this.state.mobile?.Hardwarepart.OperativeSistem}</p>}
                             {<p>Processor model is {this.state.mobile?.Hardwarepart.processormodel}</p>}
                             {<p> CPUfrequency is : {this.state.mobile?.Hardwarepart.CPUfrequency}</p>}
@@ -134,7 +136,7 @@ export default class MobileDetails extends Component {
 
                         </Col>
 
-                        <Col md={6}>
+                        <Col className="technicfield" md={6}>
                             <h4>Main Camera :</h4>
 
                             {<p> Objective numbers {this.state.mobile?.mainCamera.ObjectivesNumber}</p>}
@@ -151,7 +153,7 @@ export default class MobileDetails extends Component {
                     </Row>
 
                     <Row >
-                        <Col md={6}>
+                            <Col className="technicfield"  md={6}>
                             <h4> Front Camera :</h4>
 
 
@@ -162,7 +164,7 @@ export default class MobileDetails extends Component {
                             {<p>    fullHdShooting: {this.state.mobile?.frontCamera.fullHdShooting}</p>}
 
                         </Col>
-                        <Col md={6}>
+                            <Col className="technicfield" md={6}>
 
                             <h4> CommunicationsandPorts</h4>
 
@@ -171,14 +173,14 @@ export default class MobileDetails extends Component {
                             {<p>  ConnectionPorts: {this.state.mobile?.CommunicationsandPorts.ConnectionPorts}</p>}
 
                         </Col>
-                        <Col md={6}>
+                            <Col className="technicfield" md={6}>
                             <h4>FunctionAndNavigation</h4>
 
                             {<p>FeaturesAndCapabilities: {this.state.mobile?.FunctionAndNavigation.FeaturesAndCapabilities}</p>}
                             {<p> Navigation: {this.state.mobile?.FunctionAndNavigation.Navigation}</p>}
 
                         </Col>
-                        <Col md={6}>
+                            <Col className="technicfield" md={6}>
                             <h4>Power</h4>
                             {<p>BatteryCapacity: {this.state.mobile?.Power.BatteryCapacity}</p>}
                             {<p> FastChargingTechnology : {this.state.mobile?.Power.FastChargingTechnology}</p>}
@@ -187,7 +189,7 @@ export default class MobileDetails extends Component {
                             {<p>CharginTime: {this.state.mobile?.Power.CharginTime}</p>}
 
                         </Col>
-                        <Col md={6}>
+                            <Col className="technicfield" md={6}>
 
                             <h4>General</h4>
 
@@ -203,46 +205,61 @@ export default class MobileDetails extends Component {
 
 
                     </Row>
+                    <h2 className="text-center shoptitle">Shoplist </h2>
+                    <Shoplist className="ml-50" productId={this.props.match.params.productId} />
 
-                    <Shoplist productId={this.props.match.params.productId} />
-
-
-                    <Form   onSubmit={this.handleSubmit}>
-                        <Form.Group className="mb-3" controlId="title">
-                            <Form.Label> Title </Form.Label>
-                            <Form.Control onChange={(e) => this.handleChange(e)} name="title" value={this.state.title} type="text" placeholder="Introduce title" />
-                        </Form.Group>
+                     <h3 className="mt-20 text-center commentitle">Leave your comment...</h3>
+                    <Form className="commentform"  onSubmit={this.handleSubmit}>
+                       
                         <Form.Group className="mb-3" controlId="description">
-                            <Form.Label> Description </Form.Label>
-                            <Form.Control onChange={(e) => this.handleChange(e)} name="description" value={this.state.description} type="text" placeholder="Introduce description" />
+                                <Form.Label className="text-white"> Your comment here </Form.Label>
+                            <Form.Control as="textarea" rows={3}  onChange={(e) => this.handleChange(e)} name="description" value={this.state.description} type="text" placeholder ="Introduce description" />
                         </Form.Group> 
+                    
 
                         <Form.Group className="mb-3 productid" controlId="id">
                             <Form.Label> Product id </Form.Label>
-                            <Form.Control onChange={(e) => this.handleChange(e)} name="id" value={this.state.mobile?._id} type="text" placeholder="Introduce description" />
+                            <Form.Control onChange={(e) => this.handleChange(e)} name="id" className="bg-black" value={this.state.mobile?._id} type="text" placeholder="Introduce description" />
                         </Form.Group>
-                        <Button onClick={this.refreshComments()}  variant="primary" type="submit">
+                        <Button className="commentbutton" onClick={this.refreshComments()}  variant="primary" type="submit">
                             Create comments
                         </Button>
                     </Form>
-
-                    <h5>Comments </h5> 
+                     
+                   
+                    <h5   className="text-center commentitle">Comments </h5> 
 
                     {
-                        this.state.phone?.comments.map((comment) => {
+                        this.state.note?.comments.map(comment => {    
+                            console.log(comment.user)
+                           
+                           
                             return( 
-                                <>  
-                                <p> Author name:  {comment.name}</p>
-                                <p> Product name:  {comment.title}</p> 
-                                <p>Review:   {comment.description}</p>   
-                                <p>Comment: {comment.user}</p> 
-                                <Button onClick={()=> this.deleteComments(comment._id)}>Delete</Button>
+                                <>       
+                                
+                                <div className="comments"> 
+                                        <img className="commments_img" src={ comment.user[0] } alt="imagephoto"></img>
+                                      
+                                    <div className="text">
+                                <p className="username">{comment.user[1]}</p>    
+                                 <hr/>
+                                <p className="userrewiew">{comment.description}</p> 
+                                        </div> 
+                                    </div>  
+                                    <Button className="block-center" onClick={() => this.deleteComments(comment._id)}>Delete comment</Button>
+                            
+                                   
+                                   
+                               
+                                    
                 
                                 </>
                             ) 
                         })
-                    }
-                </Container> 
+                    } 
+            
+                </Container>  
+                </div>
 
             </>
         )

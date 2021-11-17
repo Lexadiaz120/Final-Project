@@ -36,7 +36,9 @@ p{
 } 
 
  
-
+.inform{
+    margin-top: 20px;
+}
 
 
  
@@ -47,6 +49,8 @@ font-weight: 500;
     margin-bottom: 7px;
     text-decoration: none; 
     color: #ff8d02;    
+    font-size: 22px;  
+    font-family: 'emoji';
 }  
 
 .linkto{
@@ -64,16 +68,20 @@ font-weight: 500;
     color: white;
 } 
 .color{
-    color: wheat;
+    color: wheat; 
+    font-size: 1.2rem;
 }
 
 .shortmobiledescription{ 
      width: 200px;
       color: white;
-    font-size: 13px;
+    font-size: 13px; 
     line-height: 20px;
-    margin-bottom: 7px;
-    height: 80px;
+    margin-bottom: 7px; 
+    font-size: 1rem; 
+    font-family: 'emoji'; 
+    height: 80px; 
+    overflow-x: auto;
     overflow: hidden;
     display: -webkit-box;
     -webkit-box-orient: vertical;
@@ -83,17 +91,94 @@ font-weight: 500;
     margin-top: 20px;
 } 
 
-
-.name{
-    color: wheat;
+ 
+.commentform{
+    width: 50vw; 
+    display: block; 
+    margin: 0 auto;
 } 
 
+.commments_img{
+  width: 120px; 
+  height: 120px; 
+  border-radius: 50%;
+} 
+ 
+
+
+ .block-center{
+     margin-left: 80%;
+ }
+.comments{
+    display: flex; 
+    justify-content: space-evenly;
+} 
+.text{
+    padding-left: 30px;
+}
+
+.name{
+    font-size: 1.5rem;
+    color: white;
+    font-family: emoji
+}  
+ 
+.pl-20{
+    padding-left: 150px;
+}
+  
+
+.ml-50{
+    padding-left: 50px;
+}
+
+.imagemob{
+    height: 20px;
+}
+
+.btn-dark{
+    background-color: black; 
+    width: 220px;  
+    border-radius: 1.5rem;
+    
+} 
+
+.favimg{
+    height: 20px;
+}
+ 
 
 .navbar-toggler-icon{
   background-color: white; 
   border-radius: 30%;
 } 
 
+.favimage{
+    width: 120px;
+} 
+.favdescription{
+    width: 220px;
+}
+ 
+
+
+.text{
+    word-wrap: break-word; 
+    width: 350px;
+}
+
+  .commentitle{
+      color: white;
+  } 
+
+  .comments{
+      background-color: black; 
+      border-radius: 1.5rem;
+  } 
 
 
 
+  .favdescription{
+      display: block; 
+      margin:  0 auto;
+  }

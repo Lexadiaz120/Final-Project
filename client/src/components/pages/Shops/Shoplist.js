@@ -37,12 +37,17 @@ export default class Shoplist extends Component {
     render = () => {
 
         return (
-            <>
+            <> 
+
                 {
                     this.state.shops ?
-                        this.state.shops?.map(shop => {
-                            return (
-                                <ShopItem  {...shop} />
+                        this.state.shops?.map(shop => { 
+                           
+                            return ( 
+                                <> 
+                            
+                                <ShopItem  {...shop} /> 
+                                </>
                             )
                         })
                         :

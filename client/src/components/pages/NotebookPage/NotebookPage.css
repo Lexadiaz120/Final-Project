@@ -23,10 +23,10 @@
     color: white;
 } 
 
-.row{
-    padding-left: 90px;
-} 
 
+.noteitem p{
+    width: 220px;
+}
 
 
 .notebookimage{

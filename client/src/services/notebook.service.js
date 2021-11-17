@@ -5,12 +5,14 @@ class NotebookService {
             baseURL: `${process.env.REACT_APP_API_URL}/catalog`,
             withCredentials: true
         })
-    }  
-    getShops = (id) => this.instance.get(`/shops/${id}`);
+    }
+    getShops = (id) => this.instance.get(`/shops/${id}`); 
+    addtoFavorites = (id) => this.instance.post(`/favs/${id}`)
     getNotebooks = () => this.instance.get("/notebooks")
     createNotebook = (name, shortdescription, shop, color) => this.instance.post("/notebooks", name, shortdescription, shop, color)   
     getOneNotebookCaracteristic = (id) => this.instance.get(`/caracteristicsnotebook/${id}`)
     CreateCaracteristics = (id, display, processor, CPU, StorageDevice, OperativeSystem, Laptopweight, image) => this.instance.post(`/caracteristicsnotebook/${id}`, { display, processor, CPU, StorageDevice, OperativeSystem, Laptopweight, image} )
+    getComments = (id) => this.instance.get(`/notebookcomments/${id}`)
 
   
 }

@@ -12,14 +12,14 @@ export default function NotebookItem({ name, link, shortdescription, color, pric
 
                    
 
-                    <Col className="mt-20" md={6}>
+                    <Col className="mt-20 noteitem" md={4}>
 
                         <img  className="notebookimage" src={image} alt="phone"></img>
                         <p className="title" >{name}</p>
                     <p className="shortdescription">  <br />{shortdescription}<br /> </p>
                         <p className="color">Color: {color}</p>
                         <p className="price">Precio: {"desde" + " " + price + " " + "€"}</p> 
-                    {notebook && <Link className="btn btn-primary" to={`/caracteristicsnotebook/${_id}/${notebook._id}`}>View information</Link>}
+                    {notebook && <Link className="btn btn-dark" to={`/caracteristicsnotebook/${_id}/${notebook._id}`}>View information</Link>}
                     </Col>
 
 

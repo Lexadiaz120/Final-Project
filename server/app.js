@@ -1,5 +1,8 @@
+const cors = require("cors");
 // ℹ️ Gets access to environment variables/settings
-// https://www.npmjs.com/package/dotenv
+// https://www.npmjs.com/package/dotenv 
+
+
 require("dotenv/config");
 
 // ℹ️ Connects to the database
@@ -27,6 +30,6 @@ app.use(express.static(path.join(__dirname, "public")))
 const allRoutes = require("./routes");
 app.use("/api", allRoutes);
 
-app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
+//app.use((req, res) => res.sendFile(__dirname + "/public/index.html"));
 
 module.exports = app;

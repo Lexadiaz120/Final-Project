@@ -1,20 +1,19 @@
-const express = require('express'); 
+const express = require("express");
 const router = express.Router();
-const uploader = require("../config/cloudinary.config");  
 
+// include CLOUDINARY:
+const uploader = require("../config/cloudinary.config");
 
-router.post("/image", uploader.single("imageUrl"), (req, res, next) => {
-
+router.post("/", uploader.single("photo"), (req, res, next) => {
+    // console.log('file is: ', req.file)
+    console.log(req.file);
     if (!req.file) {
-        next(new Error('No file uploaded!'));
+        res.status(500).json({ code: 500, message: "Error loading the file" });
         return;
     }
-    // get secure_url from the file object and save it in the 
+    // get secure_url from the file object and save it in the
     // variable 'secure_url', but this can be any name, just make sure you remember to use the same in frontend
-    res.json({ secure_url: req.file.secure_url });
-}) 
+    res.status(200).json({ secure_url: req.file.path });
+});
 
-
-module.exports = router;  
-
-
+module.exports = router

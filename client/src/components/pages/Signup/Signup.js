@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Container, Form, Button } from 'react-bootstrap'
-import AuthService from '../../../services/auth.service'
+import AuthService from '../../../services/auth.service' 
+import CloudService from '../../../services/cloud.service' 
+import "./Signup.css"
 
 class Signup extends Component {
   constructor(props) {
@@ -8,9 +10,11 @@ class Signup extends Component {
     this.state = {
       username: "",
       pwd: "", 
-      email: "",
+      email: "", 
+      photo: ""
     }
-    this.authService = new AuthService()
+    this.authService = new AuthService();
+    this.cloudService = new CloudService();
   }
 
   handleInput = (e) => {
@@ -20,37 +24,67 @@ class Signup extends Component {
 
   handleFormSubmit = (e) => {
     e.preventDefault();
-    const { username, pwd, email } = this.state
-    this.authService.signup(username, pwd , email)
+    const { username, pwd, email, photo } = this.state
+    this.authService.signup(username, pwd , email, photo)
       .then(res => this.props.history.push("/"))
       .catch(err => console.log(err))
-  }
+  } 
+
+  handleFileUpload = (e) => {
+    console.log("The file to be uploaded is: ", e.target.files[0]);
+
+    const uploadData = new FormData();
+    uploadData.append("photo", e.target.files[0]);
+
+    this.cloudService
+      .handleUpload(uploadData)
+      .then((response) => {
+        console.log("response is: ", response);
+
+        this.setState({ photo: response.data.secure_url });
+      })
+      .catch((err) => {
+        console.log("Error while uploading the file: ", err);
+      });
+  };
+
 
   render() {
     return (
-      <Container>
-        <Form onSubmit={this.handleFormSubmit}>
+     <div className="backblack"> 
+        <div className="login-page">
+          <Form className="formsignup" onSubmit={this.handleFormSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Username</Form.Label>
+            <Form.Label className="black">Username</Form.Label>
             <Form.Control name="username" value={this.state.username} onChange={this.handleInput} type="text" placeholder="Enter username" />
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>Password</Form.Label>
+            <Form.Label className="black">Password</Form.Label>
             <Form.Control name="pwd" value={this.state.pwd} onChange={this.handleInput} type="password" placeholder="Password" />
           </Form.Group>
           
 
           <Form.Group className="mb-3" controlId="formBasicPassword">
-            <Form.Label>E-mail</Form.Label>
+            <Form.Label className="black">E-mail</Form.Label>
             <Form.Control name="email" value={this.state.email} onChange={this.handleInput} type="email" placeholder="Type your email" />
           </Form.Group>
+          <Form.Group className="mb-3" controlId="formFile">
+            <Form.Label className="black">Photo</Form.Label>
+            <Form.Control
+              onChange={(e) => this.handleFileUpload(e)}
+              type="file"
+              placeholder="Photo"
+            />
+          </Form.Group>
 
-          <Button variant="primary" type="submit">
+
+          <Button  variant="btn btn-login" type="submit">
             Submit
           </Button>
-        </Form>
-      </Container>
+        </Form>   
+        </div>
+      </div>
     )
   }
 }

@@ -10,7 +10,8 @@ class MobileService {
     createComments = (id, title, description, user) => this.instance.post(`/comments/${id}`, { title, description, user });  
     deleteComments = (id) => this.instance.delete(`/delete/${id}`);
     getFavorites = () => this.instance.get("/favs")
-    addtoFavorites = (id) => this.instance.post(`/favs/${id}`)  
+    addtoFavorites = (id) => this.instance.post(`/favs/${id}`)   
+    createRating = (rating) => this.instance.post('/rating', rating)
     getMobiles = () => this.instance.get("/mobiles");
     createMobile = (name, shortdescription, shop, color, price, image) => this.instance.post("/mobiles", name, shortdescription, shop, color, price, image);
     getOneMobileCaracteristic = (id) => this.instance.get(`/caracteristicsmobile/${id}`)

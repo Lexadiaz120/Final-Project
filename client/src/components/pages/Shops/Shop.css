@@ -1,3 +1,37 @@
 .wherebyphoto{
     width: 30vh;
+} 
+
+.block-content{
+    display: block;
+    width: 320px; 
+    margin: 0 auto;
+    text-align: center; 
+    background-color: black; 
+    border-radius: 1.5rem;
+ } 
+ 
+ .block-center{
+     background-color: darkred;
+ }
+
+ .block-content p {
+     color: white;
+ }
+
+ .shoplink{
+    background-color: darkred
+ } 
+
+ .commentbutton{
+      background-color: darkred;
+
+ } 
+
+ 
+.username{
+    color: white;
+} 
+.userrewiew{
+    color: white;
 }

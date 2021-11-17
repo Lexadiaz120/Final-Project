@@ -21,6 +21,7 @@
     "multer": "^1.4.3",
     "multer-storage-cloudinary": "^4.0.0",
     "react-bootstrap": "^1.6.4",
+    "react-star-rating-component": "^1.4.1",
     "react-typed": "^1.2.0",
     "route": "^0.2.5",
     "typed.js": "^2.0.12"

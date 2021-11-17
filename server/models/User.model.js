@@ -32,19 +32,14 @@ const userSchema = new Schema({
     enum: ['USER', 'ADMIN'],
     default: 'USER',
   },
-  imageUrl: {
-    type: String,
+  photo: {
+    type: String, 
+    required: true
   },
   favorites: [
     {
       type: Schema.Types.Object,
       ref: 'ProductModel'
-    }
-  ], 
-  comments: [
-    {
-     type: Schema.Types.ObjectId, 
-      ref: 'commentSchema'
     }
   ]
 }, {

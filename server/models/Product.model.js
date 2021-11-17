@@ -6,7 +6,10 @@ const { Schema, model } = require("mongoose");
 const ProductModel = new Schema({
     name: {
         type: String, 
-    }, 
+    },  
+    rating: {
+        type: String
+    },
     shortdescription: {
         type: String,
         min: 20,

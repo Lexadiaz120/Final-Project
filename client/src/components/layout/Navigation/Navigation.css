@@ -1,5 +1,6 @@
 .logoname{
-    height: 70px;
+    height: 70px; 
+    width: 150px;
 } 
   
  
@@ -9,4 +10,7 @@
  
 .pt-50{
     padding-top: 70px;
+} 
+.favorites{
+    color: white;
 }

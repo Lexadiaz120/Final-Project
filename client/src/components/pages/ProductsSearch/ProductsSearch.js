@@ -66,11 +66,11 @@ export default class ProductSearch extends Component{
             <> 
             <div className="form">
             <form class=" search-form">
-                <input class="search_input" name="text" type="text" placeholder="Type product name...For example Xiaomi..." onChange={(e) => this.handleChange(e)}  />
+                <input class="search_input" name="text" type="text"  onChange={(e) => this.handleChange(e)}  />
                         <ul className="autocomplete"> 
                          {this.state.filterprod?.map((product => {
                              return (
-                                 <li className="autocomplete_item"><img className="productimage" src={product.image} alt="product" /><a href={product.link}>{product.name}</a></li>
+                                 <li className="autocomplete_item"><img className="productimage" src={product.image} alt="product" /><a className="productsearch" href={product.link}>{product.name}</a></li>
                              )
                          }))}
                         </ul>  

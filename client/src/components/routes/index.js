@@ -16,15 +16,20 @@ import Search from '../pages/Search/Search';
 import Signup from '../pages/Signup/Signup' 
 import AdminPanel from '../pages/AdminPanel/AdminPanel' 
 import ProductId from '../pages/ProductId/ProductId';  
-import Favorites from '../pages/Favorites/Favorites'; 
+import Favorites from '../pages/Favorites/Favorites';   
+import Rating from '../pages/Rating/Rating';
+
+
 
 
 const Routes = ({ storeUser, loggedUser }) => {
   return (
     <Switch>   
       <Route exact path="/" render={(props) => <HomePage {...props} />} /> 
+    
       <Route exact path="/register" render={(props) => <Signup {...props} />} /> 
       <Route exact path="/adminpanel" render={(props) => <AdminPanel {...props} />} />
+      <Route exact path="/rating" render={(props) => <Rating {...props} />} />
       <Route exact path="/search" render={(props) => <Search {...props} />} />
       <Route exact path="/createmobile" render={(props) => <MobileForm {...props} />} />   
       <Route exact path="/productsearch" render={(props) => <ProductSearch {...props} />} />

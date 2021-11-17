@@ -8,15 +8,18 @@ const ShopSchema = new Schema({
   },
   price: String,
   shop: String,
-  link: String
-},
+  link: String, 
+  rating: String, 
+  image: String
+
+}, 
   {
     timestamps: true
   })
 
+console.log(ShopSchema);
 
-
-const ShopProduct = model("ShopSchema", ShopSchema);
+const ShopProduct = model("ShopSchema", ShopSchema); 
 
 module.exports = ShopProduct;
 

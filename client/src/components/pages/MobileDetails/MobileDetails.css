@@ -3,14 +3,52 @@
     background-repeat: no-repeat; 
     background-size: cover;
     height: 100vh; 
-} 
+    
+}  
+
+.caracteristicsbackground{
+  width: 100%; 
+   
+   background-image: url("https://c4.wallpaperflare.com/wallpaper/117/928/18/pixel-art-clouds-moon-reflection-dark-background-hd-wallpaper-thumb.jpg");
+    background-size: contain;
+}
 
 .mob-foto{
-    
+    width: 100%;
     height: 50vh;
 }     
 
 
 .productid{
    display: none;
+} 
+
+.avatar{
+    width: 120px; 
+    height: 70px; 
+    border-radius: 50%;
+} 
+ 
+.technicfield{
+    background-color:  black;
+    border-radius: 1.5rem;  
+    
+
+} 
+
+.shoptitle{
+    color: white;
+} 
+
+
+ 
+.technicfield p {
+    color: white; 
+
+} 
+.technicfield h4{
+    color: hotpink;
+} 
+.technicfield h1{
+    color: white;
 }
