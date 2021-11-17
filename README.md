@@ -5,7 +5,7 @@ Project link: https://digital-search.herokuapp.com/
 
 
 # 
-##### Lista de endPoints
+##### End ponts List
 
 | Method | Path | Description 
 |--------|------|-----------------------
