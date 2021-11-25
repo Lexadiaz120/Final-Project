@@ -7,8 +7,8 @@ Project link: https://digital-search.herokuapp.com/
 # 
 ##### End ponts List
 
-| Method | Path | Description 
-|--------|------|-----------------------
+| Method | Path |  
+|--------|------|
 get |     /      Start page  
 get |    /register Sign Up
 post|    /adminpanel              AdminPanel(in reality disponible for all users)
