@@ -11,7 +11,7 @@ Project link: https://digital-search.herokuapp.com/
 |--------|------|-----------------------
 get |     /      Start page  
 get |    /register Sign Up
-post|    /adminpanel AdminPanel(in reality disponible for all users)
+post|    /adminpanel              AdminPanel(in reality disponible for all users)
 get|     /rating     Show product rating
 post|   /search     Search products 
 get|    /notebooks Get all notebooks
